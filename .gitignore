@@ -1,0 +1,24 @@
+# Node.js modules
+node_modules/
+
+# Uploaded files
+public/images/uploads/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Tailwind-generated files
+public/stylesheets/*.css
+
+# Package-lock file (optional, if regenerating)
+package-lock.json
+
+# Build artifacts (if any future build tools are used)
+dist/

@@ -1,0 +1,52 @@
+<% include ./partials/header.ejs %>
+
+<div class="profile w-full min-h-screen bg-zinc-800 text-white pt-1">
+    <!-- Hidden form for file upload -->
+    <form id="uploadform" hidden action="/updateprofile" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" onchange="this.form.submit()">
+    </form>
+
+    <!-- Profile Section for Editing -->
+    <div class="prof-details flex flex-col items-center mt-20">
+        <div class="relative">
+            <!-- Pencil Icon to Trigger Upload -->
+            <span id="uploadicon" class="hover:cursor-pointer w-10 h-10 absolute bottom-0 right-0 rounded-full flex items-center justify-center bg-zinc-200">
+                <i class="text-zinc-700 ri-pencil-line"></i>
+            </span>
+            <!-- Profile Image Display -->
+            <div class="w-32 h-32 bg-zinc-500 rounded-full overflow-hidden">
+                <img src="/images/uploads/<%= user.profileImage %>" alt="Profile Image" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <!-- Username Display -->
+        <h1 class="text-3xl mt-5 font-semibold">@ <%= user.username %></h1>
+
+        <!-- Edit Profile Form -->
+        <form action="/updateprofile" method="post" class="mt-10 flex flex-col gap-4 w-64">
+            <label class="text-sm">Username</label>
+            <input type="text" name="username" value="<%= user.username %>" class="text-black px-3 py-2 rounded-md">
+
+            <label class="text-sm">Email</label>
+            <input type="email" name="email" value="<%= user.email %>" class="text-black px-3 py-2 rounded-md">
+
+            <label class="text-sm">Contact</label>
+            <input type="text" name="contact" value="<%= user.contact %>" class="text-black px-3 py-2 rounded-md">
+
+            <button type="submit" class="mt-5 px-4 py-2 bg-red-600 rounded-md text-white">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+<!-- Use the same script from your profile page -->
+<script>
+    document.querySelector('#uploadicon').addEventListener("click", function(){
+        document.querySelector('#uploadform input').click();
+    });
+    document.querySelector('#uploadform input').addEventListener('change', function(){
+        document.querySelector('#uploadform').submit();
+    });
+    
+</script>
+
+<% include ./partials/footer.ejs %>
