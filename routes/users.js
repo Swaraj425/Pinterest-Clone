@@ -1,7 +1,15 @@
+require('dotenv').config();
+
+
 const mongoose = require('mongoose')
 const plm  = require("passport-local-mongoose")
 
-mongoose.connect("mongodb://localhost:27017/ogpinterest")
+const mongoURL = process.env.NODE_ENV === "production" ? process.env.MONGO_URL_PROD : process.env.MONGO_URL_LOCAL;
+
+
+mongoose.connect(mongoURL)
+console.log("DB Connected");
+
 
 const userSchema = mongoose.Schema({
   email : String,
