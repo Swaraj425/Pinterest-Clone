@@ -1,6 +1,9 @@
 # Node.js modules
 node_modules/
 
+# Routes modules
+routes/
+
 # Uploaded files
 public/images/uploads/
 
